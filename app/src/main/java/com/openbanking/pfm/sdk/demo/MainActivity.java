@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configSDK() {
         final OpenBankingCore openBankingCore = OpenBankingCore.Companion.getShared();
-        openBankingCore.setApiKey("5b717836-aa94-4009-b5ad-aff202aa6a6f");
+        openBankingCore.setApiKey("your_api_key");
         openBankingCore.configure();
 
         OpenBankingPFMAPI.Companion.getShared().init();

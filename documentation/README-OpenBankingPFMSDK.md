@@ -27,7 +27,7 @@ Add next configuration to project `build.gradle` for supporting kotlin language:
 
 ```gradle
 buildscript {
-    ext.kotlin_version = "1.5.30"
+    ext.kotlin_version = "1.6.0"
     ...
     dependencies {
          classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
