@@ -63,6 +63,15 @@ Add next permission into manifest.xml:
 <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
+The following property in Manifest is udsed only for vevelop purpose
+```xml
+    <application
+        ...
+        android:usesCleartextTraffic="true"
+        ...
+    </application>
+```
+
 #### Dependencies:
 
 | Product               | README                                                                                               | Description                                                                                                         | Gradle dependency                                                               |
