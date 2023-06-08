@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:padding="4dp"
+            android:maxEms="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:padding="4dp"
+            android:maxEms="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ibUpdate"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight=".15"
+            android:background="#0029F8"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ibDelete"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight=".15"
+            android:background="#FF0000"
+            app:srcCompat="@drawable/ic_delete" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/llContainer"
+        android:background="#B3B3B3" />
+
+</RelativeLayout>
