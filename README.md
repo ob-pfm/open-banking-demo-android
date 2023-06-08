@@ -63,7 +63,7 @@ Add next permission into manifest.xml:
 <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
-The following property in Manifest is udsed only for vevelop purpose
+The following property in Manifest is used only for vevelop purpose
 ```xml
     <application
         ...
