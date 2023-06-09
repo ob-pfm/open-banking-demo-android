@@ -71,7 +71,7 @@ implementation 'to-update'
 
 ### Pre-requirements
 
-Add `OpenBankingCore` initialization code to your application. Please check the `OpenBankingCore` [README]([https://)) file before continue to get the entire configuration.
+Add `OpenBankingCore` initialization code to your application. Please check the `OpenBankingCore` [README](https://github.com/ob-pfm/open-banking-demo-android/blob/master/documentation/README-OpenBankingCore.md)) file before continue to get the entire configuration.
 
 ### Configure OpenBankingPFMSDK
 
