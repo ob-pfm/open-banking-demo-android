@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/itemConsent"
+        android:orderInCategory="100"
+        android:title="Agregar consentimiento"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemResources"
+        android:orderInCategory="200"
+        android:title="Recursos"
+        app:showAsAction="never" />
+</menu>
