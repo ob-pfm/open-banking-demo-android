@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".consent.ConsentDetailActivity">
+
+    <TextView
+        android:id="@+id/tvConsentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="Consent id"/>
+
+    <TextView
+        android:id="@+id/tvConsentBankName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Bank name"/>
+
+    <TextView
+        android:id="@+id/tvConsentCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Customer"/>
+
+    <TextView
+        android:id="@+id/tvConsentCPF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="CPF"/>
+
+    <TextView
+        android:id="@+id/tvConsentPurpose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Purpose"/>
+
+    <TextView
+        android:id="@+id/tvConsentDeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Deadline"/>
+
+    <TextView
+        android:id="@+id/tvConsentExpirationDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="ExpirationDay"/>
+
+    <TextView
+        android:id="@+id/tvConsentStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Status"/>
+
+    <TextView
+        android:id="@+id/tvConsentSync"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:text="Is Synchronized"/>
+</LinearLayout>
