@@ -12,7 +12,7 @@
         android:gravity="center"
         android:textSize="24dp"
         android:textStyle="bold"
-        android:text="Bancos Disponibles"/>
+        android:text="Available Banks"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBanks"

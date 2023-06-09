@@ -233,8 +233,6 @@ public class ConsentActivity extends AppCompatActivity implements BanksAvailable
                 new GetConsentListener() {
                     @Override
                     public void success(@NonNull OBConsent consent) {
-                        showMessage("Exito!", "Consentimiento obtenido!");
-
                         mConsents.clear();
                         mConsents.add(consent);
                         consentsAdapter.notifyDataSetChanged();
