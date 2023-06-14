@@ -10,8 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.OpenBankingDemo">
+        android:theme="@style/Theme.OpenBankingDemo"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".financial.FinancialEntitiesActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.openbanking.pfm.sdk.demo.credits.CreditsActivity"
             android:exported="false" />

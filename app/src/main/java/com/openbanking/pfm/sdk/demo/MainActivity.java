@@ -16,6 +16,7 @@ import com.openbanking.pfm.sdk.demo.categories.CategoriesActivity;
 import com.openbanking.pfm.sdk.demo.consent.ConsentActivity;
 import com.openbanking.pfm.sdk.demo.credits.CreditsActivity;
 import com.openbanking.pfm.sdk.demo.databinding.ActivityMainBinding;
+import com.openbanking.pfm.sdk.demo.financial.FinancialEntitiesActivity;
 import com.openbanking.pfm.sdk.demo.summary.SummaryActivity;
 import com.openbanking.pfm.sdk.demo.transactions.TransactionsActivity;
 import com.openbanking.pfm.sdk.demo.users.UsersActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mBinding.btGoAnalysisSDK.setOnClickListener(view -> goNextClass(AnalysisActivity.class));
         mBinding.btGoAccountSDK.setOnClickListener(view -> goNextClass(AccountsActivity.class));
         mBinding.btGoBudgetsSDK.setOnClickListener(view -> goNextClass(BudgetsActivity.class));
+        mBinding.btGoFinancialEntitiesSDK.setOnClickListener(view -> goNextClass(FinancialEntitiesActivity.class));
     }
 
     @SuppressWarnings("rawtypes")
