@@ -20,6 +20,7 @@ import java.util.List;
 
 public class CreateUpdateBudgetsActivity extends AppCompatActivity {
     public static OBBudget budgetModel;
+    public static Integer budgetId;
 
     private ActivityCreateUpdateBudgetsBinding mBinding;
 
@@ -40,7 +41,7 @@ public class CreateUpdateBudgetsActivity extends AppCompatActivity {
         mBinding.btnCreateUpdateBudget.setOnClickListener(view -> {
             findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
             if (budgetModel == null) {
-                if (!mBinding.tiUBudgetId.getEditText().getText().toString().equals("")) {
+                if (!mBinding.tiUserId.getEditText().getText().toString().equals("")) {
                     createBudget();
                 }
             } else {
@@ -53,81 +54,87 @@ public class CreateUpdateBudgetsActivity extends AppCompatActivity {
         mBinding.tiCategoryId.getEditText().setText(String.valueOf(budgetModel.getCategoryId()));
         mBinding.tiName.getEditText().setText(budgetModel.getName());
         mBinding.tiAmount.getEditText().setText(String.valueOf((int) budgetModel.getAmount()));
+        mBinding.tiPercentage.getEditText().setText(String.valueOf((Double) budgetModel.getWarningPercentage()));
     }
 
     private void createBudget() {
         OBCreateBudgetRequest budgetRequest = new OBCreateBudgetRequest(
-                Integer.parseInt(mBinding.tiUBudgetId.getEditText().getText().toString()),
+                Integer.parseInt(mBinding.tiUserId.getEditText().getText().toString()),
                 Integer.parseInt(mBinding.tiCategoryId.getEditText().getText().toString()),
                 mBinding.tiName.getEditText().getText().toString(),
                 Double.parseDouble(mBinding.tiAmount.getEditText().getText().toString()),
-                1.0
+                Double.parseDouble(mBinding.tiPercentage.getEditText().getText().toString())
         );
 
+        mBinding.progressBar.setVisibility(View.VISIBLE);
         new OpenBankingPFMAPI().budgetsClient().create(
                 budgetRequest,
                 new CreateBudgetListener() {
 
                     @Override
                     public void success(OBBudget budget) {
-                        showMessage("Exito!", "Budget creado!");
-                        String budgetText = budget.getName() + ": " + budget.getId();
+                        showMessage("Success!", "Budget created!");
                     }
 
                     @Override
                     public void error(List<OBError> errors) {
                         if (!errors.isEmpty()) {
                             final OBError error = errors.get(0);
-                            showMessage("Error!", "Budget no creado!\n-Titulo: " +
-                                    error.getTitle() + "\n-Detalle: " + error.getDetail() + "\n-Código: " +
+                            showMessage("Error!", "Budget not created!\n-Title: " +
+                                    error.getTitle() + "\n-Detail: " + error.getDetail() + "\n-Code: " +
                                     error.getCode());
                         }
                     }
 
                     @Override
                     public void severError(Throwable serverError) {
-                        showMessage("Fatal Error!", "Error de servidor!: " + serverError.getMessage());
+                        showMessage("Fatal Error!", "Server Error!: " + serverError.getMessage());
                     }
                 });
     }
 
     private void updateBudget() {
+        String amountString = mBinding.tiAmount.getEditText().getText().toString();
+        long amount = Long.parseLong(amountString);
+
         OBUpdateBudgetRequest budgetRequest = new OBUpdateBudgetRequest(
                 mBinding.tiName.getEditText().getText().toString(),
-                Double.parseDouble(mBinding.tiAmount.getEditText().getText().toString()),
-                1.0,
-                Long.parseLong(mBinding.tiCategoryId.getEditText().toString())
+                amount,
+                Double.parseDouble(mBinding.tiPercentage.getEditText().getText().toString()),
+                null
         );
 
+        mBinding.progressBar.setVisibility(View.VISIBLE);
+
         new OpenBankingPFMAPI().budgetsClient().edit(
-                Integer.parseInt(mBinding.tiUBudgetId.getEditText().getText().toString()),
+                budgetId,
                 budgetRequest,
                 new UpdateBudgetListener() {
 
                     @Override
                     public void success(OBBudget budget) {
-                        showMessage("Exito!", "Budget actualizado!");
+                        showMessage("Success!", "Budget updated!");
                     }
 
                     @Override
                     public void error(List<OBError> errors) {
                         if (!errors.isEmpty()) {
                             final OBError error = errors.get(0);
-                            showMessage("Error!", "Budget no actualizado!\n-Titulo: " +
-                                    error.getTitle() + "\n-Detalle: " + error.getDetail() + "\n-Código: " +
+                            showMessage("Error!", "Budget not updated!\n-Title: " +
+                                    error.getTitle() + "\n-Detail: " + error.getDetail() + "\n-Code: " +
                                     error.getCode());
                         }
                     }
 
                     @Override
                     public void severError(Throwable serverError) {
-                        showMessage("Fatal Error!", "Error de servidor!: " + serverError.getMessage());
+                        showMessage("Fatal Error!", "Server Error!: " + serverError.getMessage());
                     }
                 });
     }
 
     private void showMessage(String title, String message) {
-        findViewById(R.id.progressBar).setVisibility(View.GONE);
+        mBinding.progressBar.setVisibility(View.GONE);
         AlertUtils.show(this, title, message);
     }
 

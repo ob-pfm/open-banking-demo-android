@@ -113,15 +113,15 @@ public class BudgetsActivity extends AppCompatActivity implements BudgetsAdapter
                     public void error(List<OBError> errors) {
                         if (!errors.isEmpty()) {
                             final OBError error = errors.get(0);
-                            showMessage("Error!", "Budget no obtenidos!\n-Titulo: " +
-                                    error.getTitle() + "\n-Detalle: " + error.getDetail() + "\n-Código: " +
+                            showMessage("Error!", "Budget not obtained!\n-Title: " +
+                                    error.getTitle() + "\n-Detail: " + error.getDetail() + "\n-Code: " +
                                     error.getCode());
                         }
                     }
 
                     @Override
                     public void severError(Throwable serverError) {
-                        showMessage("Fatal Error!", "Error de servidor!: " + serverError.getMessage());
+                        showMessage("Fatal Error!", "Server Error!: " + serverError.getMessage());
                     }
                 });
     }
@@ -137,8 +137,9 @@ public class BudgetsActivity extends AppCompatActivity implements BudgetsAdapter
     @Override
     public void onUpdate(OBBudget budgetResponse) {
         CreateUpdateBudgetsActivity.budgetModel = budgetResponse;
+        CreateUpdateBudgetsActivity.budgetId = budgetResponse.getId();
+
         Intent intent = new Intent(this, CreateUpdateBudgetsActivity.class);
-        intent.putExtra("userId", mBinding.etUserId.getText().toString());
         startActivity(intent);
     }
 
@@ -151,22 +152,22 @@ public class BudgetsActivity extends AppCompatActivity implements BudgetsAdapter
                     @Override
                     public void success() {
                         mBinding.progressBar.setVisibility(View.GONE);
-                        showMessage("Exito!", "Budget eliminado!");
+                        showMessage("Success!", "Budget deleted!");
                     }
 
                     @Override
                     public void error(List<OBError> errors) {
                         if (!errors.isEmpty()) {
                             final OBError error = errors.get(0);
-                            showMessage("Error!", "Budget no eliminado!\n-Titulo: " +
-                                    error.getTitle() + "\n-Detalle: " + error.getDetail() + "\n-Código: " +
+                            showMessage("Error!", "Budget not deleted!\n-Title: " +
+                                    error.getTitle() + "\n-Detail: " + error.getDetail() + "\n-Code: " +
                                     error.getCode());
                         }
                     }
 
                     @Override
                     public void severError(Throwable serverError) {
-                        showMessage("Fatal Error!", "Error de servidor!: " + serverError.getMessage());
+                        showMessage("Fatal Error!", "Server Error!: " + serverError.getMessage());
                     }
                 });
     }
