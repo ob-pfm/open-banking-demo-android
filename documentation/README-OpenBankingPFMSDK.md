@@ -195,6 +195,113 @@ serverError.message
 </details>
 
 
+## Financial Entities
+
+
+#### Get a list of Financial Entities
+
+Fetches the information of the user's financial entities.
+
+Java:
+
+```java
+    final Boolean isBankAggregation = true;
+
+    new OpenBankingPFMAPI().usersClient().getFinancialEntities(
+        isBankAggregation,
+        new GetFinancialEntitiesListener() {
+
+            @Override
+            public void success(List<OBFinancialEntity> financialEntities) {
+               // Use the server reponse 
+            }
+
+            @Override
+            public void error(List<OBError> errors) {
+                if(!errors.isEmpty()) {
+                    final OBError error = errors.get(0);
+                    Log.e("ERROR", error.getDetail());
+                }
+            }
+
+            @Override
+            public void severError(Throwable serverError) {
+               Log.e("SERVER ERROR", serverError.getMessage());
+            }
+        });
+```
+
+Kotlin:
+
+```kotlin
+    val isBankAggregation = true
+
+    OpenBankingPFMAPI.shared.usersClient().getFinancialEntities(
+        isBankAggregation,
+        object : GetFinancialEntitiesListener {
+            override fun success(financialEntities: List<OBFinancialEntity> ) {
+                // Use the server reponse
+            }
+
+            override fun error(errors: List<OBError>) {
+                if (errors.isNotEmpty()) {
+                    val (_, _, detail) = errors[0]
+                    Log.e("ERROR", detail)
+                }
+            }
+
+            override fun severError(serverError: Throwable) {
+                Log.e("SERVER ERROR", serverError.message!!)
+            }
+        }
+    )
+```
+
+#### Output
+
+```kotlin
+[data class OBFinancialEntity(
+    @Json(name = "id") val id : Int,
+    @Json(name = "name") val name : String,
+    @Json(name = "code") val code : String,
+    @Json(name = "imagePath") val imagePath : String?,
+    @Json(name = "isBankAggregation") val isBankAggregation : Boolean?,
+    @Json(name = "dateCreated") val dateCreated : Long,
+    @Json(name = "lastUpdated") val lastUpdated : Long
+)]
+```
+
+<details>
+  <summary><h2>Error Codes</h2></summary>
+
+#### Error 400
+
+Something in your request was wrong.
+
+```kotlin
+data class OBError(
+    @Json(name = "title") var title: String,
+    @Json(name = "code") var code: String,
+    @Json(name = "detail") var detail: String
+)
+```
+
+#### Error 404
+
+The requested param was not found.
+
+
+#### Error 500
+
+Something in your request was wrong.
+
+```kotlin
+val serverError: Throwable
+serverError.message
+```
+</details>
+
+
 ## Bank Client
 
 #### Get a list of available banks
